@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Online Book Store</title>
+    <link rel="stylesheet" href="/css.css">
+    <link rel="stylesheet" href="/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
+    <link rel="icon" type="image/x-icon" href="/img/book.png">
+    </script>
+    <style>
+        html{
+        background-color: steelblue;
+    }
+    </style>
+
+</head>
+<body class="container">
+
+    <form class="is-centered" style="margin-left: 420px; margin-top: 200px;" method="post" action="/login">
+        <input class="input is-warning" type="text" placeholder="username" style="width: 500px;" id="username" name="username"/>
+        <br>
+        <br>
+        <input class="input is-warning" type="password" placeholder="password" style="width: 500px;" id="password" name="password"/>
+        <br>
+        <br>
+        <button class="button is-success" type="submit" style="width: 500px;">
+            <a style="color: black;">Log-in</a>
+        </button>
+        <br>
+        <br>
+        <label th:unless="x == 1">Wrong username or password, please try again!</label>
+        <br>
+        <br>
+        <button   class="button is-warning"   style="width: 500px;">
+            <a href="/register" style="color: black;">Register here</a>
+        </button>
+    </form>
+
+
+
+</body>
+</html>

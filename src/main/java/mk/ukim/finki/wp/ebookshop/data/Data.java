@@ -1,0 +1,42 @@
+package mk.ukim.finki.wp.ebookshop.data;
+
+import lombok.Getter;
+import mk.ukim.finki.wp.ebookshop.model.Book;
+import mk.ukim.finki.wp.ebookshop.model.User;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
+@Getter
+public class Data {
+    public static List<Book> books = new ArrayList<>();
+    public static List<User> users = new ArrayList<>();
+
+
+    @PostConstruct
+    public void init(){
+        /*
+        books.add(new Book("Anna Karenina","Leo Tolstoy", "Novel" ,"books/1.jpg","Acclaimed by many as the world's greatest novel, Anna Karenina provides a vast panorama of contemporary life in Russia and of humanity in general. In it Tolstoy uses his intense imaginative insight to create some of the most memorable characters in all of literature. Anna is a sophisticated woman who abandons her empty existence as the wife of Karenin and turns to Count Vronsky to fulfil her passionate nature - with tragic consequences. Levin is a reflection of Tolstoy himself, often expressing the author's own views and convictions. Throughout, Tolstoy points no moral, merely inviting us not to judge but to watch. As Rosemary Edmonds comments, 'He leaves the shifting patterns of the kaleidoscope to bring home the meaning of the brooding words following the title, 'Vengeance is mine, and I will repay", 20));
+        books.add(new Book("Crime and Punishment", " Fyodor Dostoevsky", "Novel,Psychological ","books/2.png", "Raskolnikov, a destitute and desperate former student, wanders through the slums of St Petersburg and commits a random murder without remorse or regret. He imagines himself to be a great man, a Napoleon: acting for a higher purpose beyond conventional moral law. But as he embarks on a dangerous game of cat and mouse with a suspicious police investigator, Raskolnikov is pursued by the growing voice of his conscience and finds the noose of his own guilt tightening around his neck. Only Sonya, a downtrodden sex worker, can offer the chance of redemption", 32));
+        books.add(new Book("Don Quixote", "Miguel de Cervantes","Novel,Satire,Humor" ,"books/3.png", "Don Quixote has become so entranced by reading chivalric romances that he determines to become a knight-errant himself. In the company of his faithful squire, Sancho Panza, his exploits blossom in all sorts of wonderful ways. While Quixote's fancy often leads him astray—he tilts at windmills, imagining them to be giants—Sancho acquires cunning and a certain sagacity. Sane madman and wise fool, they roam the world together, and together they have haunted readers' imaginations for nearly four hundred years.",30));
+        books.add(new Book("Dune", "Frank Herbert", "Science fiction", "books/4.jpg","Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for...", 35 ));
+        books.add(new Book("Gone Girl", "Gillian Flynn", "Novel,Thriller,Mystery", "books/5.jpg","On a warm summer morning in North Carthage, Missouri, it is Nick and Amy Dunne’s fifth wedding anniversary. Presents are being wrapped and reservations are being made when Nick’s clever and beautiful wife disappears from their rented McMansion on the Mississippi River. Husband-of-the-Year Nick isn’t doing himself any favors with cringe-worthy daydreams about the slope and shape of his wife’s head, but passages from Amy's diary reveal the alpha-girl perfectionist could have put anyone dangerously on edge. Under mounting pressure from the police and the media—as well as Amy’s fiercely doting parents—the town golden boy parades an endless series of lies, deceits, and inappropriate behavior. Nick is oddly evasive, and he’s definitely bitter—but is he really a killer?",25));
+        books.add(new Book("Hamlet", "William Shakespeare","Tragedy,Drama","books/6.jpg","The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet's uncle",15));
+        books.add(new Book("Jane Eyre","Charlotte Brontë","Novel","books/7.jpg","As an orphaned child, Jane Eyre (Mia Wasikowska) is first cruelly abused by her aunt, then cast out and sent to a charity school. Though she meets with further abuse, she receives an education, and eventually takes a job as a governess at the estate of Edward Rochester (Michael Fassbender). Jane and Rochester begin to bond, but his dark moods trouble her. When Jane uncovers the terrible secret Rochester has been hiding, she flees and finds temporary refuge at the home of St. John Rivers.",30));
+        books.add(new Book("Macbeth","William Shakespeare","Tragedy,Drama","books/8.jpg","hree witches tell the Scottish general Macbeth that he will be King of Scotland. Encouraged by his wife, Macbeth kills the king, becomes the new king, and kills more people out of paranoia. Civil war erupts to overthrow Macbeth, resulting in more death.",20));
+            books.add(new Book("Pride and Prejudice","Jane Austen","Romance,Satire,Novel","books/9.jpg","In the early 19th century in the English village of Meryton, the arrival of wealthy bachelors, most notably Mr. Darcy (Laurence Olivier), stirs up the families with single daughters. Among those is the Bennet family, with five eligible daughters, including the spirited Elizabeth (Greer Garson) and her pretty older sister, Jane (Maureen O'Sullivan). As Mrs. Bennet (Mary Boland) aggressively tries to pair off her girls, Elizabeth crosses swords with the imperious Darcy.",30));
+        books.add(new Book("Snow Crash","Neal Stephenson","Science fiction,Novel","books/10.jpg","Within the Metaverse, Hiro is offered a datafile named Snow Crash by a man named Raven, who hints that it is a form of narcotic. Hiro's friend and fellow hacker Da5id views a bitmap image contained in the file, which causes his computer to crash and Da5id to suffer brain damage in the real world.",30));
+        books.add(new Book("The Brothers Karamazov", "Fyodor Dostoevsky", "Novel","books/11.jpg","The Brothers Karamazov is a murder mystery, a courtroom drama, and an exploration of erotic rivalry in a series of triangular love affairs involving the “wicked and sentimental” Fyodor Pavlovich Karamazov and his three sons―the impulsive and sensual Dmitri; the coldly rational Ivan; and the healthy, red-cheeked young novice Alyosha. Through the gripping events of their story, Dostoevsky portrays the whole of Russian life, is social and spiritual striving, in what was both the golden age and a tragic turning point in Russian culture.",35));
+        books.add(new Book("The Hobbit", "J. R. R. Tolkien","Fantasy,Novel","books/12.jpg","The Hobbit is set within Tolkien's fictional universe and follows the quest of home-loving Bilbo Baggins, the titular hobbit, to win a share of the treasure guarded by a dragon named Smaug. Bilbo's journey takes him from his light-hearted, rural surroundings into more sinister territory.",25));
+        books.add(new Book("The Martian Chronicles","Ray Bradbury", "Science fiction","books/13.jpg","The Martian Chronicles is a science fiction fix-up novel, published in 1950, by American writer Ray Bradbury that chronicles the exploration and settlement of Mars, the home of indigenous Martians, by Americans leaving a troubled Earth that is eventually devastated by nuclear war.",20));
+        books.add(new Book("Thus Spoke Zarathustra", "Friedrich Nietzsche","Philosophy,Novel","books/14.jpg","The novel opens with Zarathustra descending from his cave in the mountains after ten years of solitude. He is brimming with wisdom and love, and wants to teach humanity about the overman. He arrives in the town of the Motley Cow, and announces that the overman must be the meaning of the earth.",30));
+        books.add(new Book("The Stranger", "Albert Camus", "Novel,Philosophy","books/15.jpg", "A shipping clerk living in French Algiers in the 1940s, Meursault is a young, detached but ordinary man. The novel begins with Meursault receiving a telegram informing him of his mother's death. He attends the funeral, but surprises other attendees with his unusual calm and (once again) detachment.", 25));
+
+        users.add(new User("goran", "goran123", "goran@gmail.com"));
+        */
+    }
+
+}

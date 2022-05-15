@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Online Book Store</title>
+    <link rel="stylesheet" href="/css.css">
+    <link rel="stylesheet" href="/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
+    <link rel="icon" type="image/x-icon" href="/img/book.png">
+
+    <style>
+        #container{
+            position: relative;
+        }
+        #container:hover #overlay {
+            opacity: 1;
+        }
+
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: white;
+        }
+
+        #container:hover #overlay {
+            opacity: 1;
+        }
+
+        #text {
+            color: black;
+            font-size: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function ChangeThePage(x){
+            if(x.target.value == 1){
+                //low
+                console.log("Low to High");
+            }
+            if(x.target.value == 2){
+                console.log("High to Low");
+            }
+        }
+
+
+    </script>
+
+</head>
+<body class="container top">
+<div th:for="${user}"></div>
+
+<!--Nav Bar-->
+
+<nav class="navbar  is-spaced"  style="padding: 10px">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <img src="img/book.png" >
+        </a>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+
+        </div>
+    </div>
+    <div class="navbar-menu ">
+        <div class="navbar-start ">
+            <div class="field is-grouped">
+
+                <a class="navbar-item is-warning"  href="/">
+                            <span>
+                                Home
+                            </span>
+                </a>
+                <!--
+                <input name="search" class="input is-rounded   is-warning" placeholder="Search"  style="width: 700px; margin-left: 20px; margin-right: 15px;">
+
+                <div class="select is-warning" style="width: 200px;" onchange="ChangeThePage(event)">
+                    <select >
+                        <option value="">Sort by</option>
+                        <option value="1">Sort by price: Low to High</option>
+                        <option value="2" >Sort by price: High to Low</option>
+                    </select>
+                </div>
+                -->
+            </div>
+        </div>
+
+
+    </div>
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="field is-grouped">
+                <p class="control">
+                    <a class="bd-tw-button button is-warning" href="basket">
+              <span class="icon">
+                <img src="img/basket.png">
+              </span>
+                        <span>
+                Basket
+              </span>
+                    </a>
+                </p>
+                <p class="control" >
+                    <a class="button is-primary" href="login">
+                        <span>Log-in</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Books -->
+<!-- 1 -->
+
+<div class="columns is-spaced" style="display: flex; flex-wrap: wrap;">
+    <div th:each="book: ${books}" class="col-4 column card is-center" style="flex: 0 0 33.3%">
+        <div id="container" style="width: 400px; height: 615px;">
+            <img class="card-image"  id="image" th:src="@{${book.getImg()}}" style="height:615px; width:400px;">
+            <div id="overlay" class="is-warning">
+                <div id="text" th:utext="${book.getBookName() + '<br> by: ' + book.getAuthorName() + '<br><br>'
+            + book.getSynapse() + '<br><br> Price: ' + book.getPrice() + '$'}"></div>
+            </div>
+        </div>
+        <form  th:action="@{'/basket/' + ${book.id}}" th:name="id" th:method="POST">
+            <button type="submit" class="button is-warning card-footer is-capitalized" style="width: 400px;">
+                <a style="color: black;">Add to basket</a>
+            </button>
+        </form>
+        <!--
+        <form  th:action="@{'/basket/{book}' (book=${book})}" th:method="POST">
+            <button type="submit" th:value="${book.getBookName()}"  class="button is-warning card-footer is-capitalized" style="width: 400px;">
+                <a style="color: black;">Add to basket</a>
+            </button>
+        </form>
+        -->
+    </div>
+</div>
+
+
+</body>
+</html>

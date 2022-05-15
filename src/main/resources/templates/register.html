@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Online Book Store</title>
+    <link rel="stylesheet" href="/css.css">
+    <link rel="stylesheet" href="/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
+    <link rel="icon" type="image/x-icon" href="/img/book.png">
+    </script>
+    <style>
+        html{
+            background-color: steelblue;
+        }
+    </style>
+</head>
+<body class="container">
+
+
+    <form class="is-centered" method="post" action="/register" style="margin-left: 400px; margin-top: 200px; width: 500px;">
+    <label class="label">Username</label>
+    <input type="text" id="username" name="username" placeholder="Username" required=""
+           autofocus=""  style="width: 500px;"  class="input form-control is-warning"/>
+    <br>
+    <br>
+    <label class="label">Password</label>
+    <input type="password" id="password" name="password"  placeholder="Password"
+           required="" style="width: 500px;"  class="input form-control is-warning"/>
+    <br>
+    <br>
+    <label class="label">E-mail</label>
+    <input type="email" id="email" name="email"  placeholder="E-mail"
+           required="" style="width: 500px;"  class="input form-control is-warning"/>
+    <br>
+    <br>
+
+        <label th:unless="x == 1">The username and e-mail are already taken</label>
+    <button class="button is-warning" style="width: 500px;" type="submit">
+        <a style="color: black;">Register here</a>
+    </button>
+</form>
+
+
+
+</body>
+</html>
